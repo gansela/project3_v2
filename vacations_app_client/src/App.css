@@ -1,0 +1,149 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.grade {
+  background: rgb(185,212,228);
+  background: linear-gradient(90deg, rgba(185,212,228,1) 52%, rgba(31,209,207,1) 100%);
+
+}
+.grade-div{
+  min-height: 100vh;
+  max-height: 100%;
+}
+
+.userName{
+  display: inline-block;
+  color: white;
+  float: right;
+}
+.loader {
+  border: 16px solid beige;
+  border-radius: 50%;
+  border-top: 16px solid rgb(240, 240, 172);
+  width: 300px;
+  height: 300px;
+  -webkit-animation: "spin" 2s linear infinite;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 300px;
+  left:500px;
+}
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .auth {
+    position: "relative";
+    padding: 50px 30%;
+    left: 0%;
+  }
+    
+  @media only screen and (max-width: 800px) {
+    .auth {
+      padding: 50px 25%;
+    }
+  }  
+
+  .home {
+    position: "relative";
+    padding: 50px 10%;
+    left: 0%;
+  }
+    
+  @media only screen and (max-width: 800px) {
+    .home {
+      padding: 50px 5%;
+    }
+  }  
+
+.admin-card{
+  min-width: 120px;
+  max-width: 300px;
+  margin: 10px
+}  
+.media{
+  height: 140px
+}
+.small-headline{
+  background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#7892c2;
+	border-radius:11px;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:10px;
+	font-weight:bold;
+	font-style:italic;
+	padding:5px 10px;
+  margin-left: auto !important
+}
+
+.big-headline{
+  background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+	background-color:#7892c2;
+	color:#ffffff;
+	font-style:italic;
+  padding:15px 30px;
+  text-align: center;
+ }
+.fav-button{
+  background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+  font-size: 10px !important;
+  position: fixed !important;
+  z-index: 9999; 
+  left: 77%;
+  top: 125px
+ }
+
+ .timePicker {
+   width: 50%;
+ }
+
+ @media only screen and (max-width: 800px) {
+  .timePicker {
+    width: 100%;
+  }
+}  

@@ -1,0 +1,1 @@
+node  ../vacation_images_server/index.js
