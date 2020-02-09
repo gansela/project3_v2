@@ -7,7 +7,9 @@ import {
     getVacationsService,
     postLikeService,
     unLikeService,
-    deleteVacationService
+    deleteVacationService,
+    addVacationService,
+    editVacationService
 } from "./service";
 
 
@@ -89,8 +91,10 @@ export const getVacationsAction = () => {
         const response: any = await getVacationsService();
         if (response.errMessage) {
             alert(response.errMessage)
-            if (response.redirectLog) dispachFn(redirectLogAction(response.redirectLog));
-            dispachFn(stopSession());
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
         }
         else {
             dispachFn(getVacationsSucsess(response));
@@ -117,8 +121,10 @@ export const postLikeAction = (likeDetailes: ILike) => {
         const response: any = await postLikeService(likeDetailes);
         if (response.errMessage) {
             alert(response.errMessage)
-            if (response.redirectLog) dispachFn(redirectLogAction(response.redirectLog));
-            dispachFn(stopSession());
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
         }
         else {
             dispachFn(getVacationsSucsess(response));
@@ -131,8 +137,10 @@ export const unLikeAction = (likeDetailes: ILike) => {
         const response: any = await unLikeService(likeDetailes);
         if (response.errMessage) {
             alert(response.errMessage)
-            if (response.redirectLog) dispachFn(redirectLogAction(response.redirectLog));
-            dispachFn(stopSession());
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
         }
         else {
             dispachFn(getVacationsSucsess(response));
@@ -145,8 +153,55 @@ export const deleteVacationAction = (vacation_id: number) => {
         const response: any = await deleteVacationService(vacation_id);
         if (response.errMessage) {
             alert(response.errMessage)
-            if (response.redirectLog) dispachFn(redirectLogAction(response.redirectLog));
-            dispachFn(stopSession());
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
+        }
+        else {
+            dispachFn(getVacationsSucsess(response));
+        }
+    };
+};
+
+export const addVacationAction = (vacation: IVacation) => {
+    return async (dispachFn: any) => {
+        const response: any = await addVacationService(vacation);
+        if (response.errMessage) {
+            alert(response.errMessage)
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
+        }
+        else {
+            dispachFn(getVacationsSucsess(response));
+        }
+    };
+};
+
+export const selectVacationAction = (vacation: IVacation) => {
+    return {
+        type: Actions.SAVE_SELECTED_VACATION,
+        payload: { vacation }
+    };
+}
+
+export const clearVacationAction = () => {
+    return {
+        type: Actions.CLEAR_SELECTED_VACATION,
+    };
+}
+
+export const editVacationAction = (vacation: IVacation) => {
+    return async (dispachFn: any) => {
+        const response: any = await editVacationService(vacation);
+        if (response.errMessage) {
+            alert(response.errMessage)
+            if (response.redirectLog) {
+                dispachFn(redirectLogAction(response.redirectLog));
+                dispachFn(stopSession());
+            }
         }
         else {
             dispachFn(getVacationsSucsess(response));

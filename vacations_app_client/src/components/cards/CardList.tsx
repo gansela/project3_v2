@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ICardList, IUserCard, ILike, IVacation } from "../../ts/interfaces"
 import { connect } from "react-redux"
-import { getVacationsAction, postLikeAction, unLikeAction, deleteVacationAction } from "../../redux/actions"
+import { getVacationsAction, postLikeAction, unLikeAction, deleteVacationAction, selectVacationAction } from "../../redux/actions"
 import AdminCard from "./AdminCard"
 import UserCard from "./UserCard"
 
@@ -11,7 +11,7 @@ import Fab from '@material-ui/core/Fab';
 
 
 const CardList: React.FunctionComponent<any> = (props: ICardList) => {
-    const { getVacations, vacations, role, postLike, user, unLike, deleteVacation } = props
+    const { getVacations, vacations, role, postLike, user, unLike, deleteVacation, selectVacation, history } = props
     const initialState = { isCreateCard: false }
     const [data, setData] = useState(initialState)
 
@@ -20,7 +20,6 @@ const CardList: React.FunctionComponent<any> = (props: ICardList) => {
     }, [])
 
     useEffect(() => {
-        console.log(props)
         if (data.isCreateCard) props.history.push("/createoredit")
     }, [data.isCreateCard])
 
@@ -30,7 +29,7 @@ const CardList: React.FunctionComponent<any> = (props: ICardList) => {
     }
     const sortedVacations = sortVacations(vacations, role)
     const userFunctions = { postLike, user, unLike }
-    const adminFunctions = { deleteVacation }
+    const adminFunctions = { deleteVacation, selectVacation, history }
     const TypeOfCard: React.FunctionComponent<any> = role === "admin" ? AdminCard : UserCard
     return (
         <div>
@@ -82,6 +81,10 @@ const mapDispatch = (dispatch: any) => {
         },
         deleteVacation: (vacation_id: number) => {
             dispatch(deleteVacationAction(vacation_id))
+        },
+        selectVacation: (vacation: IVacation) => {
+            dispatch(selectVacationAction(vacation))
+           
         }
     }
 }

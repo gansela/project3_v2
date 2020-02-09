@@ -10,7 +10,8 @@ export interface IState {
     session: string,
     role: string,
     vacations: Array<IVacation>,
-    redirectLog: boolean
+    redirectLog: boolean,
+    selectedVacation: IVacation | null,
 }
 
 export interface IVacation {
@@ -22,7 +23,8 @@ export interface IVacation {
     image: string,
     price: number,
     follows: number,
-    time_of_like?: number
+    time_of_like?: number,
+
 }
 
 
@@ -44,7 +46,8 @@ export interface ICardList {
     unLike: any,
     user: string,
     deleteVacation: any,
-    history: any
+    history: any,
+    selectVacation: any
 }
 
 export interface iLogInState {
@@ -104,7 +107,7 @@ export interface IUserCard {
 
 export interface IAdminCard {
     vacation: IVacation,
-    adminFunctions: IAdminFunctions
+    adminFunctions: IAdminFunctions,
 }
 
 export interface IUserFunctions {
@@ -114,9 +117,35 @@ export interface IUserFunctions {
 }
 
 export interface IAdminFunctions {
-    deleteVacation: any
+    deleteVacation: any,
+    selectVacation: any,
+    history: any
 }
 
 export interface ICreateVacation {
+    history: any,
+    selectedVacation: IVacation,
+    addVacation: any,
+    clearVacation: any,
+    editVacation: any,
+    state: IState
+}
+
+export interface ICheckVacation {
+    description: string,
+    destination: string,
+    start_date: string,
+    end_date: string,
+    image: string,
+    price: string,
+}
+
+
+export interface IStateProps {
+    state: IState,
     history: any
+}
+
+export interface IReportsState {
+    state: IState,
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import { IVacation, IAdminCard } from "../../ts/interfaces"
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,9 +13,18 @@ import Typography from '@material-ui/core/Typography';
 
 export default function AdminCard(props: IAdminCard) {
     const { id, description, image: pic, destination, start_date, end_date, follows, price } = props.vacation
-    const { deleteVacation } = props.adminFunctions
+    const { deleteVacation, selectVacation, history } = props.adminFunctions
     const startDate: string = convertDate(start_date)
     const endDate: string = convertDate(end_date)
+
+    
+    const editVacaion = (vacation: IVacation) => {
+        selectVacation(vacation)
+        history.push("/createoredit")
+
+    }
+
+
     return (
         <div>
             <Card className="admin-card">
@@ -37,8 +46,8 @@ export default function AdminCard(props: IAdminCard) {
                     </CardContent>
                 </CardActionArea >
                 <CardActions style={{ display: "flex" }}>
-                    <Button size="small" color="secondary" onClick={() => deleteVacation(id)}> remove</Button>
-                    <Button size="small" color="primary">Learn More</Button>
+                    <Button size="small" color="secondary" onClick={() => deleteVacation(id)}> Remove</Button>
+                    <Button size="small" color="primary"  onClick={() => editVacaion(props.vacation)}>Edit</Button>
                     <div className="small-headline">Follows: {follows}</div>
                 </CardActions>
             </Card>

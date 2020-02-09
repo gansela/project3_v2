@@ -49,13 +49,21 @@ function unLikeQuery() {
 
 //  admin queries
 
-function addVacation(){
+function addVacationQuery() {
     return "INSERT INTO `vacations`.`vacations_table` (`description`, `destination`, `image`, `start_date`, `end_date`, `price`, `follows`) VALUES (?, ?, ?, ?, ?, ?, '0');"
 }
 
-function deleteVacationQuery(){
+function deleteVacationQuery() {
     return "DELETE FROM `vacations`.`vacations_table` WHERE (`id` = ?);"
 }
+
+
+function updateVacationQuery() {
+    return "UPDATE `vacations`.`vacations_table` SET `description` = ?, `destination` = ?, `image` = ?, `start_date` = ?, `end_date` = ?, `price` = ? WHERE (`id` = ?);"
+}
+
+
+
 module.exports = {
     isUserExistQuery,
     insertUserQuery,
@@ -68,5 +76,7 @@ module.exports = {
     postLikeQuery,
     updateLikesNumberQuery,
     unLikeQuery,
-    deleteVacationQuery
+    deleteVacationQuery,
+    addVacationQuery,
+    updateVacationQuery
 }

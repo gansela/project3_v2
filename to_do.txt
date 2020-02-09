@@ -1,0 +1,23 @@
+{% comment %} finish the edit function {% endcomment %}
+
+{% comment %} do the graph {% endcomment %}
+
+{% comment %} set a sign out function {% endcomment %}
+
+real home page
+
+{% comment %} do try catch in server functions {% endcomment %}
+
+replace alerts with modals in client
+
+validate login/ registr/ change password in client
+
+switch errors to auth functions in client
+
+ set local storage
+
+buitify
+
+hosting
+
+

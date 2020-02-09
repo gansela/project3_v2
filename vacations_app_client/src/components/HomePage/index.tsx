@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from "react-redux"
-import Button from '@material-ui/core/Button';
 import { disableRidirect, getVacationsAction } from "../../redux/actions"
 import { IHome, ICardList } from "../../ts/interfaces"
 import CardList from "../cards/CardList"

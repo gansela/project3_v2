@@ -18,7 +18,7 @@ router.use("/delete", async (req, res, next) => {
     next();
 })
 
-router.post("/delete", async (req, res, next) => {
+router.delete("/delete", async (req, res, next) => {
     const { vacation_id } = req.body
     const { deleteVacation } = adminPoolFunctions
     const { getVacationsData } = poolFunctions
@@ -29,12 +29,36 @@ router.post("/delete", async (req, res, next) => {
 })
 
 
-router.use("/", (vacationValidation))
+router.use(vacationValidation)
 
-router.use( "/", (req, res, next) => {
-   
-    res.send({errMessage:"hey hey"});
+
+router.post("/add", async (req, res, next) => {
+    const { newVacation } = req.body
+    const { addVacation } = adminPoolFunctions
+    const { getVacationsData } = poolFunctions
+    const numRows = await addVacation(newVacation)
+    if (!numRows) res.json({ errMessage: "there is somthing wrong, please log in agian", redirectLog: true })
+    const result = await getVacationsData(req.query)
+    res.json(result)
 })
 
+router.use("/edit",  async (req, res, next) => {
+    const { id: vacation_id } = req.body.newVacation
+    const { isVacationExist } = poolFunctions
+    const vacation = await isVacationExist({ vacation_id})
+    if (!vacation) res.json({ errMessage: "there is somthing wrong, please log in agian", redirectLog: true })
+    next();
+})
+
+
+router.post("/edit", async (req, res, next) => {
+    const { newVacation } = req.body
+    const { updateVacation } = adminPoolFunctions
+    const { getVacationsData } = poolFunctions
+    const numRows = await updateVacation(newVacation)
+    if (!numRows) res.json({ errMessage: "there is somthing wrong, please log in agian", redirectLog: true })
+    const result = await getVacationsData(req.query)
+    res.json(result)
+})
 
 module.exports = router;

@@ -10,7 +10,8 @@ const initialState: IState = {
     session: "",
     role: "guest",
     vacations: [],
-    redirectLog: false
+    redirectLog: false,
+    selectedVacation: null
 }
 
 
@@ -69,6 +70,19 @@ export default function root(state = initialState, action: IAction) {
             return {
                 ...state,
                 vacations: vacationsArr
+            }
+        }
+        case Actions.SAVE_SELECTED_VACATION: {
+            const { vacation } = action.payload
+            return {
+                ...state,
+                selectedVacation: vacation
+            }
+        }
+        case Actions.CLEAR_SELECTED_VACATION: {
+            return {
+                ...state,
+                selectedVacation: null
             }
         }
         default: {

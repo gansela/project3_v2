@@ -1,5 +1,5 @@
 import mainAxios from "../axios/mainAxios";
-import { IRegisterState, IChangePasswordState, iLogInState, ILike } from "../ts/interfaces"
+import { IRegisterState, IChangePasswordState, iLogInState, ILike, IVacation } from "../ts/interfaces"
 
 
 
@@ -63,8 +63,26 @@ export const unLikeService = async (likeDetailes : ILike) => {
 
 export const deleteVacationService = async (vacation_id : number) => {
     try {
-        const { data } = await mainAxios.post("/vacations/admin/delete",  {vacation_id});
-        return data;
+        const { data } = await mainAxios.delete("/vacations/admin/delete", { data: {vacation_id}});
+        return data
+    } catch (ex) {
+        return {errMessage: "somthing doesn't work"}
+    }
+}
+
+export const addVacationService = async (vacation : IVacation) => {
+    try {
+        const { data } = await mainAxios.post("/vacations/admin/add", vacation);
+        return data
+    } catch (ex) {
+        return {errMessage: "somthing doesn't work"}
+    }
+}
+
+export const editVacationService = async (vacation : IVacation) => {
+    try {
+        const { data } = await mainAxios.post("/vacations/admin/edit", vacation);
+        return data
     } catch (ex) {
         return {errMessage: "somthing doesn't work"}
     }

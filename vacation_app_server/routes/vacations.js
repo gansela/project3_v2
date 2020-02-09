@@ -30,7 +30,7 @@ router.use("/admin", adminRouter)
 
 // post/delete like
 
-router.use("/likes", (likeValidation))
+router.use(likeValidation)
 
 router.use("/likes", async (req, res, next) => {
     console.log("add Like")
