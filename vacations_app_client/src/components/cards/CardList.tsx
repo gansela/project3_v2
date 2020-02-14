@@ -11,7 +11,7 @@ import Fab from '@material-ui/core/Fab';
 
 
 const CardList: React.FunctionComponent<any> = (props: ICardList) => {
-    const { getVacations, vacations, role, postLike, user, unLike, deleteVacation, selectVacation, history } = props
+    const { getVacations, vacations, role, postLike, user, unLike, deleteVacation, selectVacation, history, session } = props
     const initialState = { isCreateCard: false }
     const [data, setData] = useState(initialState)
 
@@ -29,7 +29,7 @@ const CardList: React.FunctionComponent<any> = (props: ICardList) => {
     }
     const sortedVacations = sortVacations(vacations, role)
     const userFunctions = { postLike, user, unLike }
-    const adminFunctions = { deleteVacation, selectVacation, history }
+    const adminFunctions = { deleteVacation, selectVacation, history, session }
     const TypeOfCard: React.FunctionComponent<any> = role === "admin" ? AdminCard : UserCard
     return (
         <div>

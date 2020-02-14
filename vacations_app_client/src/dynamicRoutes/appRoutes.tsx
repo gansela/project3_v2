@@ -8,7 +8,7 @@ import { IAppLinks } from "../ts/interfaces"
 
 export const AppLinks = (props: IAppLinks) => {
     const { role } = props
-    const result = routes.filter(route => route.isVisible && (route.role === "all" || route.role === role)).map(route => <Button color="inherit">
+    const result = routes.filter(route => route.isVisible && ((route.role === "all" && role !== "guest")  || route.role === role)).map(route => <Button color="inherit">
         <Link style={{ color: "white" }} to={route.path}>{route.title}</Link>
     </Button>)
     return <>{result}</>

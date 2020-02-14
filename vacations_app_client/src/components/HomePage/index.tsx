@@ -18,7 +18,7 @@ class HomePage extends React.Component<IHome> {
 
 
     componentDidMount() {
-        const { isRedirect, session, redirect, getVacations, history, } = this.props
+        const { isRedirect, session, redirect, history, } = this.props
         if (!session) history.push("/login")
         if (redirect) {
             isRedirect()
@@ -29,7 +29,7 @@ class HomePage extends React.Component<IHome> {
 
 
     render() {
-        const { vacations, user, redirectLog, history  } = this.props
+        const {  redirectLog, history, session  } = this.props
         const historyNav =  {history}
         if (redirectLog) history.push("/login")
         // if(!vacations.length) return (<div className="loader"></div>)

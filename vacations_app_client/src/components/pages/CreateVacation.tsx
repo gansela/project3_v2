@@ -12,7 +12,7 @@ time.setDate(time.getDate() + 1)
 const tomorrow = time.toISOString().slice(0, 16)
 
 function CreateVacation(props: ICreateVacation) {
-    const { history, addVacation, clearVacation, selectedVacation, editVacation } = props
+    const { history, addVacation, clearVacation, selectedVacation, editVacation, session } = props
     let vacationToEdit: any = null
     const title = selectedVacation? "Edit Vacation" : "Create New Vacation"
     if (selectedVacation) {
@@ -48,6 +48,7 @@ function CreateVacation(props: ICreateVacation) {
 
 
     useEffect(() => {
+        if (!session) history.push("/login")
         return () => clearVacation()
     }, [])
 
@@ -119,7 +120,7 @@ function CreateVacation(props: ICreateVacation) {
             <TextField aria-label="minimum height" variant="outlined" margin="normal" fullWidth name="price" label={getFieldsErr("price", fieldsErrMessages)} type="number" id="price" onChange={handleChange} defaultValue={data.price} />
             <TextField aria-label="minimum height" variant="outlined" margin="normal" multiline fullWidth name="image" label={getFieldsErr("image", fieldsErrMessages)} type="number" id="image" onChange={handleChange} defaultValue={data.image} />
             <TextField id="start_date" label={getFieldsErr("start_date", fieldsErrMessages)} name="start_date" variant="outlined" margin="normal" className="timePicker" type="datetime-local" defaultValue={data.start_date} onChange={handleChange} InputLabelProps={{ shrink: true, }} />
-            <TextField id="datetime-local" label={getFieldsErr("end_date", fieldsErrMessages)} name="end_date" variant="outlined" margin="normal" className="timePicker" type="datetime-local" defaultValue={data.end_date} onChange={handleChange} InputLabelProps={{ shrink: true, }} />
+            <TextField id="end_date" label={getFieldsErr("end_date", fieldsErrMessages)} name="end_date" variant="outlined" margin="normal" className="timePicker" type="datetime-local" defaultValue={data.end_date} onChange={handleChange} InputLabelProps={{ shrink: true, }} />
             <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={handleSubmit}>Submit Vacation</Button>
             <Button style={{ margin: "15px", verticalAlign: "top" }} onClick={() => { history.push("/home") }}>cancel</Button>
         </div>

@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 
 export default function AdminCard(props: IAdminCard) {
     const { id, description, image: pic, destination, start_date, end_date, follows, price } = props.vacation
-    const { deleteVacation, selectVacation, history } = props.adminFunctions
+    const { deleteVacation, selectVacation, history, session } = props.adminFunctions
     const startDate: string = convertDate(start_date)
     const endDate: string = convertDate(end_date)
 

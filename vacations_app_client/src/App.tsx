@@ -23,7 +23,6 @@ class App extends React.Component<any>{
   signOutButton = () => {
     const {  signOut, } = this.props
     signOut()
-    console.log(history)
     history.goBack()
   }
 
@@ -32,16 +31,16 @@ class App extends React.Component<any>{
     return (
       <Router >
         <div className="grade grade-div">
-          <nav style={{ padding: "20px" }} className="grade">
+          <nav style={{ padding: "10px" }} className="grade">
             <AppLinks role={role} />
             {isLogged(role, this.signOutButton)}
             <div className="userName">
               <span>{user || role}</span>
             </div>
           </nav>
-          <Container maxWidth="md" style={{ backgroundColor: "GhostWhite", borderRadius: "10px" }} className="overflow-auto">
+          <Container maxWidth="md" style={{ backgroundColor: "GhostWhite", borderRadius: "10px", padding: "0px" }} className="overflow-auto">
             <Switch>
-              <Route exact path="/"><Redirect to="/home" /></Route>
+              <Route exact path="/"><Redirect to="/landing" /></Route>
               <AppSwitchRoutes />
               <Route path="**" component={() => <h1> Not Found! </h1>} />
             </Switch>

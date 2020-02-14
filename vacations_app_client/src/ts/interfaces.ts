@@ -47,7 +47,8 @@ export interface ICardList {
     user: string,
     deleteVacation: any,
     history: any,
-    selectVacation: any
+    selectVacation: any,
+    session: string
 }
 
 export interface iLogInState {
@@ -119,7 +120,8 @@ export interface IUserFunctions {
 export interface IAdminFunctions {
     deleteVacation: any,
     selectVacation: any,
-    history: any
+    history: any,
+    session:string
 }
 
 export interface ICreateVacation {
@@ -128,7 +130,8 @@ export interface ICreateVacation {
     addVacation: any,
     clearVacation: any,
     editVacation: any,
-    state: IState
+    state: IState,
+    session: string
 }
 
 export interface ICheckVacation {
@@ -147,5 +150,8 @@ export interface IStateProps {
 }
 
 export interface IReportsState {
-    state: IState,
+    vacations: Array<IVacation>,
+    history: any,
+    session: string
+    
 }
