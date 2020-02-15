@@ -45,8 +45,11 @@ router.use("/", async (req, res, next) => {
     const { password } = req.body
     const user = await isUserExist(req.body)
     if (!user) res.json({ message: "wrong user name or password" })
-    const isPasswordGood = (bcrypt.compareSync(password, user.password))
-    if (!isPasswordGood) res.json({ message: "wrong email or password" })
+    console.log(password)
+    console.log(user.password)
+    const isPasswordGood = bcrypt.compareSync(password, user.password)
+    console.log(isPasswordGood)
+    if (!isPasswordGood) res.json({ message: "user name  or password" })
     req.body.id = user.id
     req.body.hashedOldPassword = user.password
     req.body.role = user.role
@@ -85,8 +88,8 @@ router.post("/changepassword", async (req, res, next) => {
     const { hashedPassword } = req.body
     const { changePassword } = poolFunctions
     const isChange = await changePassword({ ...req.body, newPassword: hashedPassword })
-    if (!isChange) res.send({ message: `password change failed.`, redirect: false })
-    res.send({ message: `password changed, please log in`, redirect: true })
+    if (!isChange) res.json({ message: `password change failed.`, redirect: false })
+    res.json({ message: `password changed, please log in`, redirect: true })
 })
 
 module.exports = router;

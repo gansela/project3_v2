@@ -32,7 +32,6 @@ api.use(bodyParser.json())
 api.use("/", (req, res, next) => {
     const caller = req.ip
     console.log("connection from : ", caller)
-    // res.send("thank you for calling")
     next()
 })
 
