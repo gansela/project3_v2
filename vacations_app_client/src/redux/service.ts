@@ -9,7 +9,7 @@ export const registerService = async (user: IRegisterState) => {
         const { data } = await mainAxios.post("/auth/register", user);
         return data;
     } catch (ex) {
-        return []
+        return {message: "somthing went wrong"}
     }
 }
 
@@ -18,7 +18,7 @@ export const logInService = async (logInUser: iLogInState) => {
         const { data } = await mainAxios.post("/auth/login", logInUser);
         return data;
     } catch (ex) {
-        return []
+        return {message: "somthing went wrong"}
     }
 }
 
@@ -28,7 +28,7 @@ export const cahngePasswordService = async (user: IChangePasswordState) => {
         return data;
     } catch (ex) {
 
-        return []
+        return {message: "somthing went wrong"}
 
     }
 

@@ -17,9 +17,9 @@ import {
 export const registerAction = (user: IRegisterState) => {
     return async (dispachFn: any) => {
         const response: any = await registerService(user);
-        if (response.error) alert(response.error.details[0].message)
+        if (response.error) dispachFn(updateAlertMessage(response.message));
         else {
-            alert(response.message)
+            dispachFn(updateAlertMessage(response.message));
             dispachFn(registerSuccess(response.redirect));
         }
     };
@@ -35,9 +35,9 @@ export const registerSuccess = (redirect: boolean) => {
 export const logUserAction = (logUser: iLogInState) => {
     return async (dispachFn: any) => {
         const response: any = await logInService(logUser);
-        if (!response.redirect) alert(response.message)
+        if (!response.redirect) dispachFn(updateAlertMessage(response.message));
         else {
-            alert(response.message)
+            dispachFn(updateAlertMessage(response.message));
             dispachFn(logUserSuccess(response.redirect, response.key, response.details, response.role));
         }
     };
@@ -59,9 +59,10 @@ export const disableRidirect = () => {
 export const changePasswordAction = (user: IChangePasswordState) => {
     return async (dispachFn: any) => {
         const response: any = await cahngePasswordService(user);
-        if (response.error) alert(response.error.details[0].message)
+        if (response.error) dispachFn(updateAlertMessage(response.message));
         else {
-            alert(response.message)
+            dispachFn(updateAlertMessage(response.message));
+            dispachFn(stopSession());
             dispachFn(changePasswordSuccess(response.redirect));
         }
     };
@@ -85,12 +86,19 @@ export const stopSession = () => {
     };
 };
 
+export const updateAlertMessage = (message: string) => {
+    return {
+        type: Actions.UPDATE_ALERT_MESSAGE,
+        payload: { message }
+    };
+};
+
 
 export const getVacationsAction = () => {
     return async (dispachFn: any) => {
         const response: any = await getVacationsService();
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());
@@ -120,7 +128,7 @@ export const postLikeAction = (likeDetailes: ILike) => {
     return async (dispachFn: any) => {
         const response: any = await postLikeService(likeDetailes);
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());
@@ -136,7 +144,7 @@ export const unLikeAction = (likeDetailes: ILike) => {
     return async (dispachFn: any) => {
         const response: any = await unLikeService(likeDetailes);
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());
@@ -152,7 +160,7 @@ export const deleteVacationAction = (vacation_id: number) => {
     return async (dispachFn: any) => {
         const response: any = await deleteVacationService(vacation_id);
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());
@@ -168,7 +176,7 @@ export const addVacationAction = (vacation: IVacation) => {
     return async (dispachFn: any) => {
         const response: any = await addVacationService(vacation);
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());
@@ -197,7 +205,7 @@ export const editVacationAction = (vacation: IVacation) => {
     return async (dispachFn: any) => {
         const response: any = await editVacationService(vacation);
         if (response.errMessage) {
-            alert(response.errMessage)
+            dispachFn(updateAlertMessage(response.errMessage));
             if (response.redirectLog) {
                 dispachFn(redirectLogAction(response.redirectLog));
                 dispachFn(stopSession());

@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 class Reports extends React.Component<IReportsState, any> {
     constructor(props: IReportsState) {
         super(props)
-        this.state = { vacations: [], value: "follows" }
+        this.state = { vacations: [], value: "follows", color:"#8884d8" }
     }
 
     componentDidMount() {
@@ -20,7 +20,7 @@ class Reports extends React.Component<IReportsState, any> {
 
 
 render() {
-    const { vacations, value } = this.state
+    const { vacations, value, color } = this.state
     console.log(vacations)
 
     return (
@@ -28,17 +28,17 @@ render() {
         <div className="home">
 
             <h3 >Reports</h3>
-            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "follows"), value: "follows" })}>Sort By Follows</Button>
-            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "start_date"), value: "follows" })}>Sort By Date</Button>
-            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "price"), value: "price" })}>Sort By Price</Button>
-            {graphFunction(vacations, value)}
+            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "follows"), value: "follows", color:"#8884d8" })}>Sort By Follows</Button>
+            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "start_date"), value: "follows", color:"#8884d8" })}>Sort By Date</Button>
+            <Button color="primary" style={{ margin: "15px", verticalAlign: "top" }} onClick={() => this.setState({ vacations: sortVacations(vacations, "price"), value: "price", color:"#e6e932" })}>Sort By Price</Button>
+            {graphFunction(vacations, value, color)}
         </div>
 
     );
 }
 }
 
-const graphFunction = (vacations: Array<IVacation>, key: string) => {
+const graphFunction = (vacations: Array<IVacation>, key: string, color: string) => {
     return (
         <div>
             <BarChart
@@ -51,7 +51,7 @@ const graphFunction = (vacations: Array<IVacation>, key: string) => {
                 <YAxis />
                 <Tooltip />
                 <Legend wrapperStyle={{ margin: -30 }} />
-                <Bar dataKey={key} fill="#8884d8" />
+                <Bar dataKey={key} fill={color} />
             </BarChart>
         </div>
     )

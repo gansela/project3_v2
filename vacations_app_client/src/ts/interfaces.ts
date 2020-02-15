@@ -12,6 +12,7 @@ export interface IState {
     vacations: Array<IVacation>,
     redirectLog: boolean,
     selectedVacation: IVacation | null,
+    alertMessage: string
 }
 
 export interface IVacation {
@@ -121,7 +122,7 @@ export interface IAdminFunctions {
     deleteVacation: any,
     selectVacation: any,
     history: any,
-    session:string
+    session: string
 }
 
 export interface ICreateVacation {
@@ -153,5 +154,9 @@ export interface IReportsState {
     vacations: Array<IVacation>,
     history: any,
     session: string
-    
+}
+
+export interface IAlertModel {
+    alertMessage: string,
+    clearMessage: any,
 }

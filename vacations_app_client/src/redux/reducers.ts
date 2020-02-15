@@ -1,17 +1,18 @@
 import Actions from "./actions.config"
-import  { IAction, IState, IVacation  } from "../ts/interfaces"
+import { IAction, IState } from "../ts/interfaces"
 
 
 
 
-const initialState: IState = {
+ export const initialState: IState = {
     user: "",
     redirect: false,
     session: "",
     role: "guest",
     vacations: [],
     redirectLog: false,
-    selectedVacation: null
+    selectedVacation: null,
+    alertMessage: ""
 }
 
 
@@ -41,7 +42,7 @@ export default function root(state = initialState, action: IAction) {
                 session: "",
                 vacations: [],
                 user: "",
-                role: "guest"
+                role: "guest",
             }
         }
         case Actions.LOGIN_USER_SUCCESS: {
@@ -83,6 +84,13 @@ export default function root(state = initialState, action: IAction) {
             return {
                 ...state,
                 selectedVacation: null
+            }
+        }
+        case Actions.UPDATE_ALERT_MESSAGE: {
+            const { message } = action.payload
+            return {
+                ...state,
+                alertMessage: message
             }
         }
         default: {

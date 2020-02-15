@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 import { stopSession } from "./redux/actions"
 import Button from '@material-ui/core/Button';
 import { createBrowserHistory } from "history";
-
+import AlertModal from "./components/AlertModal/index"
 const history = createBrowserHistory();
 
 
@@ -21,7 +21,7 @@ class App extends React.Component<any>{
   }
 
   signOutButton = () => {
-    const {  signOut, } = this.props
+    const { signOut, } = this.props
     signOut()
     history.goBack()
   }
@@ -45,32 +45,33 @@ class App extends React.Component<any>{
               <Route path="**" component={() => <h1> Not Found! </h1>} />
             </Switch>
           </Container>
+          <AlertModal />
         </div>
       </Router>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 const isLogged = (role: string, signOutfunc: any, ) => {
   if (role === "guest") return
-  return (
+        return (
     <Button style={{ color: "white" }} onClick={() => {
-      signOutfunc()
-    }}>Sign Out</Button>
-  )
-}
-
-
+          signOutfunc()
+        }}>Sign Out</Button>
+        )
+      }
+      
+      
 const mapToProps = (state: any) => {
   return state
-}
-
+      }
+      
 const mapDispatch = (dispatch: any) => {
   return {
-    signOut: () => {
-      dispatch(stopSession())
-    }
-  }
-}
-
+          signOut: () => {
+          dispatch(stopSession())
+        }
+        }
+      }
+      
 export default connect(mapToProps, mapDispatch)(App)

@@ -102,6 +102,8 @@ function CreateVacation(props: ICreateVacation) {
         return isValideted
     }
 
+    //  in case of edit vcation checks how many fields have changed
+    
     const isEditedChanged = () => {
         const changedCount = Object.entries(vacationToEdit).filter(([key, value]) => {
             return value !== data[key]
