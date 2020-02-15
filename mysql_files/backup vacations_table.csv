@@ -1,0 +1,11 @@
+id,description,destination,image,start_date,end_date,price,follows
+2," a week in the tropical  paradise","rio de janiero",http://localhost:3333/hotel1.jpg,"2019-12-21 21:00:00","2019-12-28 21:00:00",120,0
+9,"all roas leads to your vacation",Rome,http://localhost:3333/hotel2.jpg,"2019-12-21 21:00:00","2019-12-23 21:00:00",55,0
+16,"the freeist city in the world",amsterdam,http://localhost:3333/hotel4.jpg,"2020-02-11 19:50:00","2020-02-12 19:50:00",40,1
+17,"a nice and quiet place to be",givataim,https://www.mishan.co.il/wp-content/uploads/2017/04/900x500-givatim-03.jpg,"2020-02-12 22:02:00","2020-02-13 22:02:00",46,1
+18,"sin city like you never seen before","las vegas",http://localhost:3333/hotel5.jpg,"2020-02-11 12:39:00","2020-02-12 12:39:00",100,0
+21,"enjoy classical europe",viena,http://localhost:3333/hotel6.jpg,"2020-02-13 12:40:00","2020-03-09 12:40:00",230,1
+22,"good deal in the city of lights",paris,http://localhost:3333/hotel7.jpg,"2020-02-13 12:40:00","2020-02-13 12:40:00",100,0
+23,"come see the royal jewl of the british empire",london,http://localhost:3333/hotel8.jpg,"2020-02-13 12:40:00","2020-02-13 12:40:00",200,0
+24," a couple of days in the city that never sleeps","new york",http://localhost:3333/hotel9.jpg,"2020-02-13 12:40:00","2020-02-13 12:40:00",34,0
+25,"come and see the stars","los angeles",http://localhost:3333/hotel1.jpg,"2020-02-13 12:40:00","2020-02-13 12:40:00",95,0
